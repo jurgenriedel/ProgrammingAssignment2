@@ -12,8 +12,12 @@ makeCacheMatrix <- function(x = matrix()) {
   inv <- NULL 
   ## Define set function
   set <- function(y) {
-    		x <<- y
-    		inv <<- NULL
+    ## Reset inverse only if matrix has changed.       
+      if (identical(x,y)==FALSE)
+      {
+          x <<- y
+          inv <<- NULL 
+      }
   }
   ## Define get function
   get <- function() x
